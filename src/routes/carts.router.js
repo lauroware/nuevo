@@ -1,24 +1,33 @@
-import { Router } from "express"
-import {getCartByIdController, addCartController, addProductToCartController, deleteProductOnCartController, deleteCartController, updateCartController, updateQuantController, purchaseCartController} from "../controllers/carts.controller.js"
-import { onlyAdm, onlyUser } from "../middlewares/role.middleware.js"
-import passport from "passport"
+import { Router } from "express";
+import {
+  getCartByIdController,
+  addCartController,
+  addProductToCartController,
+  deleteProductOnCartController,
+  deleteCartController,
+  updateCartController,
+  updateQuantController,
+  purchaseCartController,
+} from "../controllers/carts.controller.js";
+import { onlyAdm, onlyUser } from "../middlewares/role.middleware.js";
+import passport from "passport";
 
-const router = Router()
+const router = Router();
 
-router.get("/GET/:cid", getCartByIdController)
+router.get("/GET/:cid", getCartByIdController);
 
-router.post("/POST", addCartController)
+router.post("/POST", addCartController);
 
-router.post("/POST/:cid/product/:pid", /* onlyUser, */ addProductToCartController);
+router.post("/POST/:cid/product/:pid", addProductToCartController);
 
-router.delete("/:cid/", deleteCartController)
+router.delete("/:cid/", deleteCartController);
 
-router.delete("/:cid/products/:pid", deleteProductOnCartController)
+router.delete("/:cid/products/:pid", deleteProductOnCartController);
 
-router.put("/:cid", updateCartController)
+router.put("/:cid", updateCartController);
 
-router.put("/:cid/products/:pid", updateQuantController)
+router.put("/:cid/products/:pid", updateQuantController);
 
-router.get("/:cid/purchase", purchaseCartController)
+router.get("/:cid/purchase", purchaseCartController);
 
-export default router
+export default router;
